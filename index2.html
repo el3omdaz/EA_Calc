@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111b2f">
+<meta name="description" content="حاسبة تفاعلية لاستراتيجية AdvancedGridEA 1.09 المبنية على كود MQL5 المرفق. حساب التبريد والتقسيم وإعادة التعبئة والهدف اليومي.">
+<title>GridLab | حاسبة AdvancedGridEA 1.09</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#1a2940;--muted:#708096;--border:#e1e7ee;--teal:#00b399;--teal-dark:#008f7b;--indigo:#4555bc;--red:#d54d62;--orange:#b77720;--blue:#3d6dd1;--shadow:0 10px 36px rgba(22,38,63,.05);--radius:19px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,Arial,sans-serif;font-size:13px;line-height:1.65}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #94e9dc;outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed}.app{max-width:1510px;padding:26px 32px 54px;margin:0 auto}.hero{background:linear-gradient(120deg,#17263c 0%,#101b2f 66%,#163345 100%);border-radius:24px;position:relative;overflow:hidden;color:#fff;padding:27px 32px 28px;box-shadow:0 12px 35px #16294018}.hero:before{content:"";position:absolute;width:460px;height:460px;left:-120px;top:-270px;border-radius:50%;border:75px solid #30e0c00d;pointer-events:none}.hero-top,.hero-footer,.toolbar,.section-head,.metric-top,.tab-head,.panel-header,.section-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}.hero-top{position:relative}.brand{display:flex;align-items:center;gap:13px}.mark{width:48px;height:48px;border-radius:14px;background:linear-gradient(140deg,#21dec0,#3f78ca);display:grid;place-items:center;box-shadow:0 9px 24px #00acaa2b}.mark svg{width:28px;height:28px}.brand-name{font-size:19px;font-weight:800;letter-spacing:.1px}.brand-sub{font-size:11px;color:#bdcadb}.version,.offline{display:inline-flex;align-items:center;gap:7px;border:1px solid #ffffff2c;background:#ffffff10;border-radius:999px;padding:5px 12px;color:#dfedf3;font-size:11px;white-space:nowrap}.status-dot{width:7px;height:7px;border-radius:50%;background:#31d6b7;box-shadow:0 0 0 4px #31d6b718}.hero-content{position:relative;max-width:780px;margin-top:27px}.kicker{color:#67ddc5;font-size:11px;font-weight:800;letter-spacing:.6px}.hero h1{font-size:clamp(24px,2.6vw,35px);line-height:1.45;margin:7px 0 7px;font-weight:800}.hero p{color:#b7c9d7;max-width:670px;margin:0;font-size:13px}.hero-footer{position:relative;justify-content:flex-start;margin-top:20px;flex-wrap:wrap}.hero-point{display:flex;gap:7px;align-items:center;color:#d2e1e9;font-size:11px}.hero-point svg{width:15px;height:15px;color:#30d3b6}.toolbar{margin:23px 0 20px;flex-wrap:wrap}.toolbar-title h2{font-size:17px;margin:0;font-weight:800}.toolbar-title p{font-size:11px;margin:1px 0 0;color:var(--muted)}.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--border);background:#fff;color:#34465d;border-radius:11px;padding:9px 14px;font-size:11px;font-weight:700;display:inline-flex;gap:8px;align-items:center;justify-content:center;transition:.15s}.btn:hover{background:#f4f9fb;transform:translateY(-1px)}.btn svg{width:15px;height:15px}.btn.primary{background:var(--teal-dark);color:#fff;border-color:var(--teal-dark)}.btn.primary:hover{background:#007b69}.btn.ghost-dark{background:#1a2c44;border-color:#1a2c44;color:#fff}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:19px}.metric{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);min-height:124px}.metric-top{color:var(--muted);font-weight:700;font-size:11px}.metric-icon{width:30px;height:30px;border-radius:9px;background:#ebfaf7;display:grid;place-items:center;color:#049e88}.metric-icon.blue{background:#edf2ff;color:#5773bb}.metric-icon.orange{background:#fff4e8;color:#c58b41}.metric-icon.purple{background:#f0eeff;color:#7972bb}.metric-icon svg{width:17px;height:17px}.metric-num{font-size:26px;line-height:1.3;font-weight:800;margin-top:9px;font-family:Tahoma,Arial,sans-serif;direction:ltr;text-align:right;unicode-bidi:plaintext}.metric-note{font-size:10px;color:#8492a4;margin-top:5px}.negative{color:var(--red)!important}.positive{color:#008e79!important}.neutral{color:var(--ink)!important}.layout{display:grid;grid-template-columns:362px minmax(0,1fr);gap:18px;align-items:start}.settings,.results{min-width:0}.settings{position:sticky;top:13px}.card{border:1px solid var(--border);background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.panel-header{padding:19px 20px;border-bottom:1px solid #eef1f5}.panel-title{display:flex;gap:10px;align-items:center}.panel-title-icon{width:31px;height:31px;display:grid;place-items:center;background:#f0f6ff;color:#5573b3;border-radius:9px}.panel-title-icon svg{width:17px;height:17px}.panel-title h3,.section-head h3{font-size:13px;margin:0;font-weight:800}.panel-title small,.section-head small{display:block;font-size:10px;color:var(--muted);font-weight:500;margin-top:2px}.panel-toggle{display:inline-flex;background:#eff6f5;color:#158879;border-radius:99px;padding:3px 9px;font-size:10px;font-weight:800}.control-scroll{max-height:72vh;overflow-y:auto;scrollbar-color:#d2dce6 transparent;scrollbar-width:thin}.setting-section{padding:16px 20px 6px;border-bottom:1px solid #eef1f5}.setting-section:last-child{border-bottom:0;padding-bottom:20px}.section-head{margin-bottom:13px}.section-head h3{font-size:12px}.section-head .step{border-radius:7px;background:#eaf9f6;padding:3px 7px;color:#018f7b;font-size:10px;font-weight:800}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 10px;margin-bottom:13px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;margin-bottom:5px;color:#65758a;font-weight:700;font-size:10px}.field input,.field select{background:#fafcfe;color:var(--ink);display:block;width:100%;height:36px;border:1px solid #dce4ee;border-radius:9px;padding:5px 9px;font-family:Tahoma,Arial,sans-serif;font-size:12px}.field select{font-family:Cairo,Tahoma,sans-serif}.field input[type=number]{direction:ltr;text-align:left}.field .hint{font-size:9px;margin-top:3px;color:#9aa6b4}.mini-divider{height:1px;background:#eef2f7;margin:14px 0}.toggle-row{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:10px 0 14px}.toggle-row strong{font-size:10px;font-weight:700;color:#64748b}.switch{appearance:none;position:relative;width:36px;height:21px;background:#c9d3de;border:0;border-radius:20px;flex-shrink:0;cursor:pointer;transition:background .2s}.switch:before{content:"";position:absolute;top:3px;right:3px;width:15px;height:15px;border-radius:50%;background:#fff;transition:transform .2s}.switch:checked{background:var(--teal)}.switch:checked:before{transform:translateX(-15px)}.helper{font-size:10px;color:#8b9aab}.disclaimer{margin:14px 2px 0;padding:12px;border-radius:13px;background:#fffaf1;border:1px solid #f6e3c7;color:#9b7441;font-size:10px;line-height:1.8}.disclaimer strong{color:#935d2d}.results>.card{margin-bottom:15px}.tabs{padding:10px 14px;display:flex;gap:7px;overflow-x:auto;border-bottom:1px solid #edf0f5;scrollbar-width:thin}.tab{white-space:nowrap;padding:10px 13px;border:1px solid transparent;background:transparent;border-radius:10px;color:#77889c;font-size:11px;font-weight:800}.tab:hover{background:#f4f9fb}.tab[aria-selected=true]{background:#e8f8f5;color:#018b79;border-color:#d4f1ec}.tab svg{width:14px;height:14px;vertical-align:middle;margin-left:4px}.tabpane{display:none}.tabpane.active{display:block}.content{padding:20px 22px}.intro{font-size:11px;color:#8190a3;margin:5px 0 18px}.section-head.bigger{margin-bottom:15px}.section-head.bigger h3{font-size:14px}.light-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;background:#f0f5ff;color:#5474ae;padding:5px 10px;border-radius:100px}.light-tag.warn{background:#fff4e8;color:#ad792b}.light-tag.teal{background:#e9f8f5;color:#098c7c}.chart-wrap{height:264px;position:relative;border:1px solid #e9eef4;border-radius:14px;background:linear-gradient(180deg,#fff,#fdfefe);padding:12px;margin-bottom:16px}.chart-wrap canvas{width:100%;height:100%;display:block}.legend{display:flex;gap:15px;align-items:center;flex-wrap:wrap;font-size:10px;color:#718197;margin:0 0 16px}.legend span{display:inline-flex;align-items:center;gap:5px}.legend i{width:12px;height:3px;display:inline-block;background:var(--teal);border-radius:3px}.legend i.dash{background:transparent;border-top:2px dashed #8a9caf;height:0}.legend i.now{background:#edaa50}.stat-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:16px}.mini-stat{border:1px solid #e8edf3;border-radius:12px;background:#fbfcfe;padding:12px}.mini-stat span{font-size:10px;color:#8090a3}.mini-stat strong{display:block;font-size:15px;font-family:Tahoma,Arial,sans-serif;margin-top:5px;font-weight:800;direction:ltr;text-align:right}.notice{border-radius:12px;background:#f0f6ff;border:1px solid #dfebff;padding:11px 13px;color:#5c7190;font-size:10px;line-height:1.9;margin:12px 0}.notice.warning{background:#fff8ee;border-color:#f6e5ca;color:#977137}.notice.danger{background:#fff2f3;border-color:#fadadd;color:#ad5860}.notice.good{background:#eaf9f6;border-color:#d0f1e9;color:#24796f}.alert-list .notice{margin:8px 0}.table-scroller{overflow:auto;border:1px solid #e6ecf2;border-radius:12px}.table{width:100%;border-collapse:collapse;white-space:nowrap;min-width:570px;font-size:11px;text-align:right}.table th{background:#f8fafc;color:#8794a5;font-weight:700;font-size:10px;padding:12px 13px}.table td{padding:11px 13px;border-top:1px solid #edf1f5;color:#405169}.table tbody tr:hover{background:#fafdfc}.table tbody tr:first-child .type-pill{color:#5472ba;background:#edf2ff}.type-pill{display:inline-block;padding:3px 9px;border-radius:99px;background:#e9f8f5;color:#198e7f;font-weight:800;font-size:10px}.mono{font-family:Tahoma,Arial,sans-serif;direction:ltr;unicode-bidi:isolate;display:inline-block}.table tfoot td{font-weight:800;background:#f8fafc}.form-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}.form-row label{font-size:11px;color:#718096;font-weight:700}.form-row select{border:1px solid var(--border);border-radius:9px;background:#fff;padding:8px;font-size:12px;color:#354760;min-width:190px}.explain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.explain{border:1px solid #e9eef3;border-radius:12px;padding:14px;background:#fbfcfe}.explain b{font-size:11px}.explain p{margin:6px 0 0;color:#78899d;font-size:10px;line-height:1.9}.daily-top{border-radius:16px;background:linear-gradient(115deg,#ebfbf8,#f3f7ff);padding:20px;display:flex;gap:15px;justify-content:space-between;align-items:center;flex-wrap:wrap}.daily-top small{display:block;font-size:11px;color:#73869b}.daily-top strong{display:block;font-size:30px;font-weight:800;font-family:Tahoma,Arial,sans-serif;line-height:1.6}.progress-track{margin-top:13px;width:100%;height:9px;background:#e4ebf3;border-radius:20px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#14bb9e,#4e87cb);border-radius:20px;transition:width .2s}.daily-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.daily-item{padding:13px;border:1px solid #e7edf3;border-radius:12px}.daily-item small{display:block;color:#8190a3;font-size:10px}.daily-item strong{display:block;margin-top:5px;font-size:15px;font-family:Tahoma,Arial,sans-serif}.guide-section{border-bottom:1px solid #eef2f5;padding:13px 0}.guide-section:last-child{border-bottom:0}.guide-section h4{font-size:12px;margin:0 0 6px}.guide-section p{font-size:11px;color:#6f8093;line-height:2;margin:0}.foot{text-align:center;margin-top:28px;color:#8999a9;font-size:10px}.foot b{color:#3e6173}.toast{position:fixed;left:24px;bottom:22px;background:#1a2b41;color:#fff;padding:11px 18px;border-radius:11px;box-shadow:0 12px 26px #243a5770;transform:translateY(90px);opacity:0;transition:.3s;z-index:99;font-size:11px;max-width:calc(100vw - 40px)}.toast.show{transform:translateY(0);opacity:1}.hidden{display:none!important}details.guided{margin-top:8px;border:1px solid #e7edf3;border-radius:12px;padding:9px 12px}details.guided summary{cursor:pointer;font-weight:800;color:#55718a;font-size:10px}details.guided p{font-size:10px;color:#8090a4;margin:8px 0 0}.field-info{border:1px solid #e8edf3;padding:8px 10px;background:#fbfcfe;border-radius:9px;margin-bottom:14px;font-size:10px;color:#8190a2}.muted{color:#8696a7} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1150px){.layout{grid-template-columns:320px minmax(0,1fr)}.app{padding:22px 20px 40px}.settings{position:static}.control-scroll{max-height:none}.metrics{gap:10px}.metric{padding:14px}.metric-num{font-size:23px}}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.settings{order:0}.results{order:1}.control-scroll{max-height:none}.setting-section{padding-inline:20px}.fields{grid-template-columns:repeat(4,minmax(0,1fr))}.field.full{grid-column:span 2}.chart-wrap{height:245px}}
+@media(max-width:610px){.app{padding:12px 12px 35px}.hero{padding:22px 18px;border-radius:19px}.hero h1{font-size:23px}.hero-content{margin-top:19px}.version{display:none}.hero-footer{margin-top:15px}.toolbar{margin:19px 0 12px;align-items:flex-start}.toolbar-title{width:100%}.toolbar-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}.toolbar-actions .btn:last-child{grid-column:span 2}.metrics{gap:8px;margin-bottom:12px}.metric{min-height:110px;padding:13px}.metric-num{font-size:20px}.metric-note{font-size:9px}.metric-top{font-size:10px}.metric-icon{width:26px;height:26px}.metric-icon svg{width:15px}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.field.full{grid-column:span 2}.content{padding:17px 14px}.panel-header{padding:15px}.tab{padding:8px 10px;font-size:10px}.stat-row,.daily-grid{grid-template-columns:1fr 1fr}.stat-row .mini-stat:last-child{grid-column:1/-1}.explain-grid{grid-template-columns:1fr}.chart-wrap{height:225px;padding:3px}.table{font-size:10px}.toolbar-actions .btn{padding:9px 8px}.brand-name{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero">
+  <div class="hero-top">
+   <div class="brand">
+    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l4-7 4 4 6-9"/><path d="M17 5h4v4"/><path d="M3 21h18"/></svg></div>
+    <div><div class="brand-name">GridLab <span style="color:#68e7ce">EA</span></div><div class="brand-sub">آلة حساب استراتيجية الشبكة</div></div>
+   </div>
+   <div class="version"><span class="status-dot"></span> مبنية على كود AdvancedGridEA v1.09</div>
+  </div>
+  <div class="hero-content"><div class="kicker">EXPERT ADVISOR CALCULATOR</div><h1>احسب كل حركة قبل ما تبدأ التداول</h1><p>محاكاة تقديرية لمسافات التبريد، أحجام اللوت، الإغلاقات الجزئية، أوامر إعادة التعبئة والهدف اليومي — حسب المعادلات الموجودة في ملف الإكسبيرت المرفق.</p></div>
+  <div class="hero-footer"><span class="hero-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 7v5c0 5 3.5 8.5 9 10 5.5-1.5 9-5 9-10V7z"/><path d="m8 12 3 3 5-6"/></svg> تعمل بدون اتصال بالمنصة</span><span class="hero-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h4M7 16h6"/></svg> حسابات فورية</span><span class="hero-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg> لا تنفّذ صفقات حقيقية</span></div>
+</header>
+<div class="toolbar">
+ <div class="toolbar-title"><h2>لوحة المحاكاة</h2><p>عدّل أي إعداد من اليمين، وتتحدث الأرقام والجداول تلقائيًا.</p></div>
+ <div class="toolbar-actions">
+  <button class="btn" type="button" id="resetBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>استعادة الافتراضي</button>
+  <button class="btn" type="button" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m-4-4 4 4 4-4"/><path d="M4 17v4h16v-4"/></svg>تصدير الإعدادات</button>
+  <button class="btn primary" type="button" id="reportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h18v16H3z"/><path d="M7 9h10M7 13h10M7 17h6"/></svg>تصدير تقرير CSV</button>
+ </div>
+</div>
+<section class="metrics" aria-label="النتائج الرئيسية">
+ <div class="metric"><div class="metric-top"><span>إجمالي اللوت المخطّط</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18V9m6 9V5m6 13v-7m5 7V3"/></svg></span></div><div class="metric-num" id="mLots">—</div><div class="metric-note" id="mLotsNote">الأساسي + التبريد فقط</div></div>
+ <div class="metric"><div class="metric-top"><span>ربح / خسارة افتراضية</span><span class="metric-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 7 6 6 4-4 8 8"/><path d="M16 17h5v-5"/></svg></span></div><div class="metric-num" id="mPnL">—</div><div class="metric-note">إذا كانت كل صفقات الجدول مفتوحة</div></div>
+ <div class="metric"><div class="metric-top"><span>سعر التعادل عند الإغلاق</span><span class="metric-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg></span></div><div class="metric-num" id="mBreakeven">—</div><div class="metric-note">معدّل الدخول مع أثر السبريد للبيع</div></div>
+ <div class="metric"><div class="metric-top"><span>المتبقي للهدف اليومي</span><span class="metric-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 18 6-6 4 3 6-9"/><path d="M15 6h5v5"/></svg></span></div><div class="metric-num" id="mTargetGap">—</div><div class="metric-note" id="mTargetNote">بناءً على Equity الحساب</div></div>
+</section>
+<div class="layout">
+ <aside class="settings"><div class="card">
+  <div class="panel-header"><div class="panel-title"><span class="panel-title-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 17h16M8 3v8M16 13v8"/></svg></span><div><h3>إعدادات الإكسبيرت</h3><small>القيم الافتراضية مأخوذة من الكود</small></div></div><span class="panel-toggle">LIVE CALC</span></div>
+  <div class="control-scroll">
+   <div class="setting-section"><div class="section-head"><h3>الأصل والسعر</h3><span class="step">01</span></div>
+    <div class="fields">
+      <div class="field full"><label for="symbolPreset">نموذج الرمز</label><select id="symbolPreset"><option value="XAUUSD">XAUUSD · ذهب (مثال)</option><option value="EURUSD">EURUSD · يورو/دولار (مثال)</option><option value="CUSTOM">يدوي · مواصفات وسيطك</option></select></div>
+      <div class="field"><label for="entryPrice">سعر دخول الصفقة الأساسية</label><input id="entryPrice" type="number" step="any" value="2650.00"></div>
+      <div class="field"><label for="currentBid">سعر Bid الحالي</label><input id="currentBid" type="number" step="any" value="2648.50"></div>
+      <div class="field"><label for="spreadPoints">السبريد (نقاط Point)</label><input id="spreadPoints" type="number" min="0" step="any" value="25"></div>
+      <div class="field"><label for="digits">خانات السعر (Digits)</label><input id="digits" type="number" min="0" max="8" step="1" value="2"></div>
+      <div class="field"><label for="point">حجم النقطة (_Point)</label><input id="point" type="number" min="0.00000001" step="any" value="0.01"></div>
+      <div class="field"><label for="tickSize">حجم Tick</label><input id="tickSize" type="number" min="0.00000001" step="any" value="0.01"></div>
+      <div class="field"><label for="tickValue">قيمة Tick للوت واحد</label><input id="tickValue" type="number" min="0.00000001" step="any" value="1"></div>
+      <div class="field"><label for="currency">عملة الحساب</label><input id="currency" type="text" maxlength="8" value="USD" dir="ltr" style="text-transform:uppercase"></div>
+    </div><div class="field-info">قيم Tick / Point مجرد أمثلة؛ للحصول على نتائج مالية صحيحة، أدخل مواصفات الرمز من وسيط MT5.</div>
+   </div>
+   <div class="setting-section"><div class="section-head"><h3>الصفقة والشبكة</h3><span class="step">02</span></div>
+    <div class="fields">
+      <div class="field full"><label for="direction">InpTradeDirection</label><select id="direction"><option value="both">شراء وبيع (يفتح شراء أولًا)</option><option value="buy">شراء فقط</option><option value="sell">بيع فقط</option></select></div>
+      <div class="field"><label for="baseLot">اللوت الأساسي</label><input id="baseLot" type="number" min="0.00000001" step="any" value="1"></div>
+      <div class="field"><label for="maxBuyPositions">أقصى مراكز شراء B + C</label><input id="maxBuyPositions" type="number" min="0" max="100" step="1" value="5"></div>
+      <div class="field"><label for="maxSellPositions">أقصى مراكز بيع B + C</label><input id="maxSellPositions" type="number" min="0" max="100" step="1" value="5"></div>
+      <div class="field"><label for="unit">وحدة المسافة</label><select id="unit"><option value="points">Points</option><option value="pips">Pips</option></select></div>
+      <div class="field"><label for="coolingDistance">مسافة التبريد</label><input id="coolingDistance" type="number" step="any" value="100"></div>
+      <div class="field"><label for="tpDistance">مسافة كل هدف TP</label><input id="tpDistance" type="number" step="any" value="10"></div>
+      <div class="field"><label for="splits">عدد التقسيمات</label><input id="splits" type="number" min="1" max="1000" step="1" value="10"></div>
+      <div class="field"><label for="pendingExtra">مسافة إضافية لإعادة التعبئة</label><input id="pendingExtra" type="number" step="any" value="0"></div>
+      <div class="field full"><label for="coolingMode">نوع لوت التبريد</label><select id="coolingMode"><option value="same">نفس اللوت</option><option value="step">زيادة ثابتة</option><option value="multiplier">مضاعف</option></select></div>
+      <div class="field" id="stepField"><label for="fixedStep">الزيادة لكل تبريد</label><input id="fixedStep" type="number" step="any" value="0.10"></div>
+      <div class="field" id="multiplierField"><label for="multiplier">معامل المضاعفة</label><input id="multiplier" type="number" min="0" step="any" value="2"></div>
+    </div>
+    <div class="toggle-row"><strong>السماح بإعادة تعبئة صفقات R</strong><input class="switch" type="checkbox" id="refillRecycles" checked aria-label="السماح بإعادة تعبئة صفقات R"></div>
+    <div class="toggle-row"><strong>TP خادمي لطلبات التعبئة</strong><input class="switch" type="checkbox" id="serverTP" aria-label="TP خادمي لطلبات التعبئة"></div>
+   </div>
+   <div class="setting-section"><div class="section-head"><h3>حدود حجم اللوت</h3><span class="step">03</span></div>
+    <div class="fields">
+      <div class="field"><label for="minLot">SYMBOL_VOLUME_MIN</label><input id="minLot" type="number" min="0.00000001" step="any" value="0.01"></div>
+      <div class="field"><label for="maxLot">SYMBOL_VOLUME_MAX</label><input id="maxLot" type="number" min="0.00000001" step="any" value="100"></div>
+      <div class="field full"><label for="lotStep">SYMBOL_VOLUME_STEP</label><input id="lotStep" type="number" min="0.00000001" step="any" value="0.01"></div>
+    </div>
+   </div>
+   <div class="setting-section"><div class="section-head"><h3>الهدف اليومي والرصيد</h3><span class="step">04</span></div>
+    <div class="toggle-row"><strong>تفعيل الهدف اليومي</strong><input class="switch" type="checkbox" id="dailyEnabled" checked aria-label="تفعيل الهدف اليومي"></div>
+    <div class="fields">
+      <div class="field"><label for="dayBalance">رصيد بداية اليوم</label><input id="dayBalance" type="number" min="0" step="any" value="10000"></div>
+      <div class="field"><label for="equity">Equity الحالي</label><input id="equity" type="number" min="0" step="any" value="10400"></div>
+      <div class="field"><label for="targetMode">طريقة الهدف</label><select id="targetMode"><option value="percent">نسبة مئوية %</option><option value="money">مبلغ مالي</option></select></div>
+      <div class="field"><label for="targetValue">قيمة الهدف</label><input id="targetValue" type="number" step="any" value="10"></div>
+      <div class="field"><label for="startHour">ساعة بدء اليوم (السيرفر)</label><input id="startHour" type="number" min="0" max="23" step="1" value="0"></div>
+      <div class="field"><label for="resumeMinutes">دقائق بعد بداية اليوم</label><input id="resumeMinutes" type="number" min="0" step="1" value="60"></div>
+    </div>
+    <div class="toggle-row"><strong>إغلاق صفقات EA عند الهدف</strong><input class="switch" type="checkbox" id="closeAll" checked aria-label="إغلاق صفقات EA عند الهدف"></div>
+    <div class="toggle-row"><strong>تفعيل حد التداولات اليومي</strong><input class="switch" type="checkbox" id="tradeLimit" aria-label="تفعيل حد التداولات اليومي"></div>
+    <div class="fields"><div class="field"><label for="dailyCount">العدد المسجّل اليوم</label><input id="dailyCount" type="number" min="0" step="1" value="0"></div><div class="field"><label for="maxDaily">الحد الأقصى لليوم</label><input id="maxDaily" type="number" min="0" step="1" value="20"></div></div>
+   </div>
+  </div>
+ </div><div class="disclaimer"><strong>تنبيه مخاطر:</strong> كود الإكسبيرت لا يضع وقف خسارة ثابتًا للصفقات الأساسية أو صفقات التبريد. الحاسبة أداة تعليمية وليست توقعًا مضمونًا للنتائج أو اختبارًا خلفيًا.</div></aside>
+ <main class="results"><div class="card">
+  <nav class="tabs" role="tablist" aria-label="صفحات الحاسبة">
+   <button type="button" class="tab" data-tab="overview" id="tab-overview" role="tab" aria-selected="true" aria-controls="pane-overview">نظرة عامة</button>
+   <button type="button" class="tab" data-tab="grid" id="tab-grid" role="tab" aria-selected="false" aria-controls="pane-grid">مستويات التبريد</button>
+   <button type="button" class="tab" data-tab="splits" id="tab-splits" role="tab" aria-selected="false" aria-controls="pane-splits">الإغلاق وإعادة التعبئة</button>
+   <button type="button" class="tab" data-tab="daily" id="tab-daily" role="tab" aria-selected="false" aria-controls="pane-daily">الهدف اليومي</button>
+   <button type="button" class="tab" data-tab="guide" id="tab-guide" role="tab" aria-selected="false" aria-controls="pane-guide">كيف يحسب الإكسبيرت؟</button>
+  </nav>
+  <div class="tabpane active" id="pane-overview" role="tabpanel" aria-labelledby="tab-overview"><div class="content">
+    <div class="section-head bigger"><div><h3>تحليل التعرض مقابل حركة السعر</h3><small>ربح/خسارة تقديرية بعد افتراض فتح كامل شبكة B + C وبدون احتساب عمليات TP/refill</small></div><span class="light-tag teal">محاكاة سعرية</span></div>
+    <div class="chart-wrap"><canvas id="plChart" role="img" aria-label="الرسم البياني لربح أو خسارة شبكة الصفقات حسب السعر"></canvas></div>
+    <div class="legend"><span><i></i> الربح والخسارة الافتراضيان</span><span><i class="dash"></i> خط التعادل</span><span><i class="now"></i> سعر Bid الحالي</span></div>
+    <div class="stat-row"><div class="mini-stat"><span>إجمالي صفقات B + C</span><strong id="statCount">—</strong></div><div class="mini-stat"><span>متوسط سعر الدخول المرجّح</span><strong id="statAvg">—</strong></div><div class="mini-stat"><span>قيمة الربح لكل Point لكل اللوت</span><strong id="statPointValue">—</strong></div></div>
+    <div id="warnings" class="alert-list"></div>
+    <div class="section-head bigger" style="margin-top:20px"><div><h3>سيناريوهات السعر</h3><small>نفترض بقاء الأحجام الموضحة في جدول التبريد مفتوحة بالكامل</small></div></div>
+    <div class="table-scroller"><table class="table"><thead><tr><th>السيناريو من سعر Bid الحالي</th><th>سعر Bid المفترض</th><th>الربح / الخسارة</th></tr></thead><tbody id="scenarioRows"></tbody></table></div>
+  </div></div>
+  <div class="tabpane" id="pane-grid" role="tabpanel" aria-labelledby="tab-grid"><div class="content">
+    <div class="section-head bigger"><div><h3>جدول الشبكة وحجم كل صفقة</h3><small>الأساسي B + صفقات التبريد C المحتملة بالترتيب</small></div><button type="button" class="btn" id="gridCsvBtn">CSV للجدول</button></div>
+    <div class="notice">كل صف يمثل فتحًا <b>افتراضيًا</b> جديدًا عند بلوغ عتبة التبريد، بافتراض سبريد ثابت وتنفيذ بالسعر النظري. قد لا تصل الشبكة كلها إلى هذه الحالة لأن الإكسبيرت يغلق أجزاء من الصفقات ويعيد تعبئتها خلال الحركة.</div>
+    <div class="table-scroller"><table class="table"><thead><tr><th>رقم</th><th>النوع</th><th>شرط بلوغ المستوى</th><th>سعر الدخول المتوقع</th><th>اللوت</th><th>التراكمي</th><th>P/L عند السعر الحالي</th></tr></thead><tbody id="gridRows"></tbody><tfoot id="gridFooter"></tfoot></table></div>
+    <div class="stat-row" style="margin-top:15px"><div class="mini-stat"><span>المسافة السعرية للتبريد</span><strong id="statCoolingPrice">—</strong></div><div class="mini-stat"><span>سعر Ask المفترض الآن</span><strong id="statAsk">—</strong></div><div class="mini-stat"><span>إجمالي قيمة 1 Point</span><strong id="statTickExposure">—</strong></div></div>
+    <details class="guided"><summary>لماذا لا أرى صفقات إعادة التعبئة هنا؟</summary><p>لأن الحد الأقصى InpMaxBuyOpenPositions/InpMaxSellOpenPositions يُحسب في الكود للصفقات الأساسية والتبريد فقط. صفقات التعبئة R وأوامرها المعلقة تعتمد على مسار السعر، ولا يمكن استنتاج عددها النهائي من المدخلات وحدها.</p></details>
+  </div></div>
+  <div class="tabpane" id="pane-splits" role="tabpanel" aria-labelledby="tab-splits"><div class="content">
+    <div class="section-head bigger"><div><h3>سُلَّم الإغلاقات الجزئية</h3><small>كل خطوة تستهدف مسافة إضافية من سعر دخول الصفقة الأصلي</small></div><span class="light-tag">TP متدرّج</span></div>
+    <div class="form-row"><label for="selectedPos">الصفقة المطلوب تحليلها:</label><select id="selectedPos"></select></div>
+    <div class="stat-row"><div class="mini-stat"><span>حجم الجزء المعتاد</span><strong id="splitVolume">—</strong></div><div class="mini-stat"><span>عدد خطوات الإغلاق الفعلية</span><strong id="splitCount">—</strong></div><div class="mini-stat"><span>مجموع الربح عند اكتمال السلم</span><strong id="splitTotal">—</strong></div></div>
+    <div class="table-scroller"><table class="table"><thead><tr><th>الخطوة</th><th>سعر تحقيق الهدف</th><th>لوت الإغلاق</th><th>المتبقي</th><th>الربح لهذه الخطوة</th><th>أمر التعبئة المقترح</th></tr></thead><tbody id="splitRows"></tbody></table></div>
+    <div class="notice warning" id="splitNote">—</div>
+    <div class="explain-grid"><div class="explain"><b>كيف تُحسب إعادة التعبئة؟</b><p id="refillExplanation">—</p></div><div class="explain"><b>كيف تتعامل صفقات R مع الإغلاق؟</b><p id="rExplanation">—</p></div></div>
+  </div></div>
+  <div class="tabpane" id="pane-daily" role="tabpanel" aria-labelledby="tab-daily"><div class="content">
+    <div class="section-head bigger"><div><h3>حساب الهدف اليومي</h3><small>يعتمد الإكسبيرت على Equity الحساب ككل، وليس أرباح صفقات الإكسبيرت فقط</small></div><span class="light-tag teal">ACCOUNT EQUITY</span></div>
+    <div class="daily-top"><div><small>Equity المطلوب لإتمام الهدف اليومي</small><strong id="dailyTarget">—</strong><span class="helper" id="dailyModeDescription">—</span></div><span id="dailyBadge" class="light-tag">—</span></div>
+    <div class="progress-track"><div class="progress-fill" id="dailyProgress" style="width:0"></div></div>
+    <p class="helper" id="progressDescription" style="margin-bottom:14px">—</p>
+    <div class="daily-grid"><div class="daily-item"><small>رصيد بداية اليوم المسجّل</small><strong id="dailyBalanceInfo">—</strong></div><div class="daily-item"><small>Equity المدخل حاليًا</small><strong id="dailyEquityInfo">—</strong></div><div class="daily-item"><small>الفارق إلى الهدف</small><strong id="dailyGapInfo">—</strong></div><div class="daily-item"><small>الربح/الخسارة من رصيد بداية اليوم</small><strong id="dailyDelta">—</strong></div><div class="daily-item"><small>معدل الهدف</small><strong id="dailyRate">—</strong></div><div class="daily-item"><small>سجل التداول اليومي</small><strong id="dailyTradesInfo">—</strong></div></div>
+    <div id="dailyWarnings"></div>
+  </div></div>
+  <div class="tabpane" id="pane-guide" role="tabpanel" aria-labelledby="tab-guide"><div class="content">
+    <div class="section-head bigger"><div><h3>ما الذي ينفّذه الكود فعلًا؟</h3><small>مراجعة من الدوال الواردة في My Ai EA 5.mq5 · AdvancedGridEA v1.09</small></div></div>
+    <div class="guide-section"><h4>01 · افتتاح الصفقة الأساسية</h4><p>الدالة <code>EnsureInitialPositions()</code> لا تبدأ دورة جديدة ما دامت هناك أي صفقات أو أوامر معلقة مرتبطة بنفس الرمز وMagic Number. عندما تسمح الإعدادات بالاتجاهين، تُعطي الأفضلية لصفقة <b>BUY</b>، ولا تفتح BUY وSELL معًا.</p></div>
+    <div class="guide-section"><h4>02 · مستويات التبريد</h4><p>الشراء: عندما يصل <code>Bid</code> إلى أدنى دخول محمي ناقص مسافة التبريد، يُفتح BUY بسعر Ask. البيع: عندما يصل <code>Ask</code> إلى أعلى دخول محمي زائد المسافة، يُفتح SELL بسعر Bid. مستويات R لا تُستخدم مرتكزات للتبريد. المسافة: Points = _Point، أما Pips فتساوي 10×_Point للرموز ذات 3 أو 5 خانات فقط.</p></div>
+    <div class="guide-section"><h4>03 · حجم اللوت والتقسيم</h4><p>لوت التبريد رقم n يساوي اللوت الأصلي، أو الأصلي + (n × الزيادة الثابتة)، أو الأصلي × المضاعف للأس n. حجم الصفقة يُقرب لأقرب خطوة حجم لوت مسموحة. الإغلاق الجزئي يحسب <code>floor((initial_lot / splits) / volume_step) × volume_step</code>، وإذا كان أقل من MinLot يستخدم MinLot. ويغلق الباقي عندما يصبح المتبقي أقل من MinLot أو عند آخر خطوة.</p></div>
+    <div class="guide-section"><h4>04 · جني الأرباح وإعادة التعبئة</h4><p>أهداف الإغلاق للشراء تبدأ من سعر الدخول + (n × مسافة TP) وللبيع بالعكس. عند نجاح الإغلاق، يضع الإكسبيرت أمر BUY LIMIT أو SELL LIMIT بالحجم المغلق، على بُعد TP + المسافة الإضافية من سعر الهدف. أمر R الجديد ينشأ بتقسيمة واحدة. هدف TP الخادمي لأوامر R اختياري ومعطّل افتراضيًا.</p></div>
+    <div class="guide-section"><h4>05 · حدود الحماية</h4><p>حد <code>InpMaxBuyOpenPositions</code> أو <code>InpMaxSellOpenPositions</code> يقيّد عدد الصفقات الأساسية والتبريد، ولا يقيّد إجمالي صفقات R. لا يوجد Stop Loss ثابت للصفقات. <code>InpUseDailyTradeLimit</code> يحسب فتح صفقات السوق وإنشاء أوامر التعبئة (على مستوى الحساب والـMagic Number عبر الرموز)، ولا يعني عدد الصفقات النشطة.</p></div>
+    <div class="guide-section"><h4>06 · الهدف اليومي وتوقيت البدء</h4><p>الهدف = رصيد بداية اليوم × (1 + النسبة ÷ 100)، أو رصيد بداية اليوم + مبلغ الهدف. يتوقف فتح الصفقات عند بلوغ <b>Equity الحساب كاملًا</b> الهدف. عند خيار إغلاق الجميع، يغلق صفقات هذا الإكسبيرت ويحذف أوامره. <code>InpResumeAfterMinutes</code> هو عدد الدقائق بعد بداية يوم السيرفر، وليس فترة انتظار بعد الوصول للهدف؛ تتم إعادة حالة الهدف عند بداية يوم تداول جديد.</p></div>
+    <div class="notice danger">لا توفر الحاسبة اتصالًا مباشرًا بخادم MetaTrader 5، ولا تستطيع معرفة الصفقات الحية أو السبريد المتغير أو قيمة Tick من وسيطك تلقائيًا. لا تتوقع مطابقة نتائج فعلية بدون بيانات وتنفيذ السوق.</div>
+  </div></div>
+ </div></main>
+</div>
+<div class="foot">صُمّمت الحاسبة بناءً على الدوال الموجودة في ملف <b>My Ai EA 5.mq5</b> · المحاكاة مستقلة ولا تتصل بحساب تداول · <span id="savedMessage">تُحفظ الإعدادات محليًا في هذا المتصفح عند توفر التخزين</span></div>
+</div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){'use strict';
+const byId=id=>document.getElementById(id);
+const IDS=['symbolPreset','entryPrice','currentBid','spreadPoints','digits','point','tickSize','tickValue','currency','direction','baseLot','maxBuyPositions','maxSellPositions','unit','coolingDistance','tpDistance','splits','pendingExtra','coolingMode','fixedStep','multiplier','refillRecycles','serverTP','minLot','maxLot','lotStep','dailyEnabled','dayBalance','equity','targetMode','targetValue','startHour','resumeMinutes','closeAll','tradeLimit','dailyCount','maxDaily'];
+const checks=new Set(['refillRecycles','serverTP','dailyEnabled','closeAll','tradeLimit']);
+const defaults={};IDS.forEach(id=>defaults[id]=checks.has(id)?byId(id).checked:byId(id).value);
+const profiles={XAUUSD:{entryPrice:2650,currentBid:2648.5,spreadPoints:25,digits:2,point:.01,tickSize:.01,tickValue:1,minLot:.01,maxLot:100,lotStep:.01},EURUSD:{entryPrice:1.085,currentBid:1.0845,spreadPoints:12,digits:5,point:.00001,tickSize:.00001,tickValue:1,minLot:.01,maxLot:100,lotStep:.01}};
+let model=null, activeTab='overview',toastTime=null;
+const val=id=>Number(byId(id).value), str=id=>byId(id).value.trim(),bool=id=>byId(id).checked;
+const fmt=(n,d=2)=>Number.isFinite(n)?new Intl.NumberFormat('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n):'—';
+const dec=(n,d=2)=>Number.isFinite(n)?Number(n).toFixed(d):'—';
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safe=n=>Number.isFinite(n)?n:0;
+function volumeDigits(step){for(let i=0;i<=8;i++){if(Math.abs(step-Number(step.toFixed(i)))<=1e-8)return i;}return 8;}
+function normalizeNearest(volume,c){const v=Math.max(c.minLot,Math.min(volume,c.maxLot));return Number((Math.round(v/c.lotStep)*c.lotStep).toFixed(c.volDigits));}
+function normalizeDown(volume,c){if(volume<c.minLot-1e-10)return 0;return Number((Math.floor(Math.min(volume,c.maxLot)/c.lotStep+1e-8)*c.lotStep).toFixed(c.volDigits));}
+function roundPrice(price,c){return Number(price.toFixed(c.digits));}
+function money(n,c,forceSign=false){return (forceSign&&n>0?'+':'')+fmt(n,2)+' '+c.currency;}
+function pnlColor(n){return n>1e-8?'positive':n< -1e-8?'negative':'neutral';}
+function loadSettings(){try{const raw=localStorage.getItem('gridlab_ea_v109');if(!raw)return;const obj=JSON.parse(raw);for(const id of IDS){if(Object.hasOwn(obj,id)){if(checks.has(id)){byId(id).checked=Boolean(obj[id]);}else{byId(id).value=String(obj[id]);}}}}catch(e){byId('savedMessage').textContent='التخزين المحلي غير متاح في هذا المتصفح';}}
+function saveSettings(){try{const obj={};for(const id of IDS)obj[id]=checks.has(id)?bool(id):str(id);localStorage.setItem('gridlab_ea_v109',JSON.stringify(obj));}catch(e){}}
+function readConfig(){const c={};for(const id of IDS)c[id]=checks.has(id)?bool(id):(id==='currency'||id==='direction'||id==='unit'||id==='coolingMode'||id==='targetMode'||id==='symbolPreset')?str(id):val(id);
+ c.digits=Math.max(0,Math.min(8,Math.trunc(safe(c.digits))));c.splits=Math.max(1,Math.min(1000,Math.trunc(safe(c.splits))));c.maxBuyPositions=Math.max(1,Math.min(100,Math.trunc(safe(c.maxBuyPositions))));c.maxSellPositions=Math.max(1,Math.min(100,Math.trunc(safe(c.maxSellPositions))));c.maxPositions=c.direction==='sell'?c.maxSellPositions:c.maxBuyPositions;c.point=c.point>0?c.point:.00001;c.tickSize=c.tickSize>0?c.tickSize:c.point;c.tickValue=c.tickValue>0?c.tickValue:0;c.minLot=c.minLot>0?c.minLot:.01;c.maxLot=Math.max(c.maxLot,c.minLot);c.lotStep=c.lotStep>0?c.lotStep:.01;c.volDigits=volumeDigits(c.lotStep);c.entryPrice=safe(c.entryPrice);c.currentBid=safe(c.currentBid);c.spreadPoints=Math.max(0,safe(c.spreadPoints));c.currency=c.currency.toUpperCase().slice(0,8)||'USD';c.unitPoint=c.unit==='pips'&&(c.digits===3||c.digits===5)?c.point*10:c.point;c.tpPrice=c.tpDistance*c.unitPoint;c.coolingPrice=c.coolingDistance*c.unitPoint;c.pendingPrice=(c.tpDistance+c.pendingExtra)*c.unitPoint;c.spreadPrice=c.spreadPoints*c.point;c.tradeSide=c.direction==='sell'?'sell':'buy';c.onePointValue=c.point/c.tickSize*c.tickValue;c.currentAsk=roundPrice(c.currentBid+c.spreadPrice,c);return c;}
+function compute(){const c=readConfig();const list=[],sign=c.tradeSide==='buy'?-1:1;let cumulative=0;
+ for(let i=0;i<c.maxPositions;i++){
+  const volumeRaw=i===0?c.baseLot:c.coolingMode==='step'?c.baseLot+i*c.fixedStep:c.coolingMode==='multiplier'?c.baseLot*Math.pow(c.multiplier,i):c.baseLot;
+  const lot=normalizeNearest(Math.max(0,safe(volumeRaw)),c);
+  const price=i===0?roundPrice(c.entryPrice,c):roundPrice(list[i-1].price+sign*(c.coolingPrice-c.spreadPrice),c);
+  const trigger=i===0?null:roundPrice(list[i-1].price+sign*c.coolingPrice,c);
+  cumulative+=lot;
+  const pnl=(c.tradeSide==='buy'?c.currentBid-price:price-c.currentAsk)/c.tickSize*c.tickValue*lot;
+  list.push({i:i+1,kind:i===0?'B':'C',lot,price,trigger,cumulative,pnl});
+ }
+ const totalLots=list.reduce((a,p)=>a+p.lot,0),weighted=totalLots>0?list.reduce((a,p)=>a+p.price*p.lot,0)/totalLots:0;
+ const breakEven=c.tradeSide==='buy'?weighted:weighted-c.spreadPrice;
+ const currentPL=list.reduce((a,p)=>a+p.pnl,0);
+ const targetEquity=c.targetMode==='percent'?c.dayBalance*(1+c.targetValue/100):c.dayBalance+c.targetValue;
+ const targetGap=Math.max(0,targetEquity-c.equity),targetHit=c.equity>=targetEquity;
+ return {c,list,totalLots,weighted,breakEven,currentPL,targetEquity,targetGap,targetHit};
+}
+function posPnl(m,bid){const c=m.c,ask=bid+c.spreadPrice;return m.list.reduce((sum,p)=>sum+(c.tradeSide==='buy'?bid-p.price:p.price-ask)/c.tickSize*c.tickValue*p.lot,0);}
+function splitPlan(m,index){const c=m.c,p=m.list[index]||m.list[0],n=c.splits;let part=normalizeDown(p.lot/n,c);if(part<=0)part=c.minLot;let remaining=p.lot,totalProfit=0;const rows=[];
+ if(c.tpPrice<=0)return{p,part,rows,totalProfit};
+ for(let i=1;i<=n;i++){
+  if(remaining<c.minLot-1e-10)break;
+  let close=(i>=n||remaining-part<c.minLot-1e-10)?remaining:part;
+  close=normalizeDown(close,c);if(close<=0)break;
+  const target=roundPrice(p.price+(c.tradeSide==='buy'?1:-1)*i*c.tpPrice,c);
+  const refillPrice=roundPrice(target+(c.tradeSide==='buy'?-1:1)*c.pendingPrice,c);
+  const refillTP=roundPrice(refillPrice+(c.tradeSide==='buy'?1:-1)*c.tpPrice,c);
+  const profit=Math.abs(target-p.price)/c.tickSize*c.tickValue*close;
+  remaining=Math.max(0,Number((remaining-close).toFixed(c.volDigits)));
+  totalProfit+=profit;
+  rows.push({i,target,close,remaining,profit,refillPrice,refillTP});
+  if(!remaining)break;
+ }
+ return{p,part,rows,totalProfit};
+}
+function toast(msg){const node=byId('toast');node.textContent=msg;node.classList.add('show');clearTimeout(toastTime);toastTime=setTimeout(()=>node.classList.remove('show'),2800);}
+function note(type,txt){return `<div class="notice ${type}">${txt}</div>`;}
+function renderMain(m){const c=m.c;
+ byId('mLots').textContent=fmt(m.totalLots,c.volDigits);byId('mLotsNote').textContent=`${m.list.length} صفقة B + C مخططة`;
+ const pnlEl=byId('mPnL');pnlEl.textContent=money(m.currentPL,c,true);pnlEl.className='metric-num '+pnlColor(m.currentPL);
+ byId('mBreakeven').textContent=fmt(m.breakEven,c.digits);
+ byId('mTargetGap').textContent=c.dailyEnabled?money(m.targetGap,c):'معطّل';byId('mTargetNote').textContent=c.dailyEnabled?(m.targetHit?'الهدف متحقق عند Equity المدخل':'الفارق المتبقي من Equity الحساب'):'الهدف اليومي غير مفعّل';
+ byId('statCount').textContent=String(m.list.length);byId('statAvg').textContent=fmt(m.weighted,c.digits);byId('statPointValue').textContent=money(m.totalLots*c.onePointValue,c);
+ byId('statCoolingPrice').textContent=fmt(c.coolingPrice,c.digits);byId('statAsk').textContent=fmt(c.currentAsk,c.digits);byId('statTickExposure').textContent=money(m.totalLots*c.onePointValue,c);
+ const warnings=[];
+ if(c.direction==='both')warnings.push(note('',`<b>مهم:</b> اختيار «شراء وبيع» في الكود يفتح <b>BUY أولًا فقط</b> عند بداية دورة جديدة. لذلك تحاكي الشاشة الحالية جانب الشراء.`));
+ if(c.coolingDistance<=0)warnings.push(note('warning','مسافة التبريد غير موجبة: الدالة ManageCooling() لن تفتح تبريدًا جديدًا في هذه الحالة؛ الصفوف بعد الصفقة الأساسية هي تصور حسابي فقط.'));
+ if(c.coolingPrice>0&&c.spreadPrice>=c.coolingPrice)warnings.push(note('danger','السبريد يساوي أو يتجاوز مسافة التبريد؛ عند افتراض السبريد الثابت تصبح مستويات الدخول التالية متداخلة أو غير منطقية.'));
+ if(c.tpPrice<=0)warnings.push(note('warning','مسافة TP غير موجبة؛ الإغلاقات الجزئية لا تعمل في الكود حينها.'));
+ if(c.baseLot<c.minLot)warnings.push(note('warning','اللوت الأساسي دون الحد الأدنى؛ سيضبطه الإكسبيرت إلى حجم يسمح به الوسيط.'));
+ if(c.splits>0&&normalizeDown(normalizeNearest(Math.max(0,c.baseLot),c)/c.splits,c)<=0)warnings.push(note('warning','تقسيم اللوت أصغر من الحد الأدنى للوسيط؛ سيستخدم الإكسبيرت MinLot للإغلاق، وقد ينهي الصفقة قبل استكمال عدد التقسيمات المطلوب.'));
+ warnings.push(note('danger','<b>لا يوجد وقف خسارة ثابت.</b> كما أن حد الصفقات يطبق على B وC فقط؛ عدد أوامر وصفقات إعادة التعبئة R غير محدد بهذا المدخل.'));
+ byId('warnings').innerHTML=warnings.join('');
+ const steps=[-2,-1,0,1,2],d=Math.max(Math.abs(c.coolingPrice),c.point);
+ byId('scenarioRows').innerHTML=steps.map(s=>{const bid=roundPrice(c.currentBid+s*d,c),pl=posPnl(m,bid);return `<tr><td>${s===0?'السعر الحالي':s<0?`هبوط ${Math.abs(s)} × مسافة تبريد`:`صعود ${s} × مسافة تبريد`}</td><td><span class="mono">${fmt(bid,c.digits)}</span></td><td class="${pnlColor(pl)}"><span class="mono">${escapeHtml(money(pl,c,true))}</span></td></tr>`;}).join('');
+ renderChart(m);
+}
+function renderGrid(m){const c=m.c;
+ byId('gridRows').innerHTML=m.list.map(p=>{const trigger=p.trigger===null?'دخول أساسي':c.tradeSide==='buy'?`Bid ≤ ${fmt(p.trigger,c.digits)}`:`Ask ≥ ${fmt(p.trigger,c.digits)}`;
+ return `<tr><td><span class="mono">${p.i}</span></td><td><span class="type-pill">${p.kind==='B'?'أساسي B':`تبريد C${p.i-1}`}</span></td><td><span class="mono">${trigger}</span></td><td><span class="mono">${fmt(p.price,c.digits)}</span></td><td><span class="mono">${fmt(p.lot,c.volDigits)}</span></td><td><span class="mono">${fmt(p.cumulative,c.volDigits)}</span></td><td class="${pnlColor(p.pnl)}"><span class="mono">${escapeHtml(money(p.pnl,c,true))}</span></td></tr>`;}).join('');
+ byId('gridFooter').innerHTML=`<tr><td colspan="4">المجموع النظري للصفقات الأساسية والتبريد</td><td><span class="mono">${fmt(m.totalLots,c.volDigits)}</span></td><td>—</td><td class="${pnlColor(m.currentPL)}"><span class="mono">${escapeHtml(money(m.currentPL,c,true))}</span></td></tr>`;
+ const previous=byId('selectedPos').value;
+ byId('selectedPos').innerHTML=m.list.map((p,i)=>`<option value="${i}">${p.kind==='B'?'الأساسية B':`التبريد C${i}`} · ${fmt(p.lot,c.volDigits)} لوت · ${fmt(p.price,c.digits)}</option>`).join('');
+ if(previous!==''&&m.list[Number(previous)])byId('selectedPos').value=previous;
+}
+function renderSplits(m){const c=m.c,idx=Number(byId('selectedPos').value)||0,plan=splitPlan(m,idx);
+ byId('splitVolume').textContent=fmt(plan.part,c.volDigits);byId('splitCount').textContent=String(plan.rows.length);byId('splitTotal').textContent=money(plan.totalProfit,c);
+ byId('splitRows').innerHTML=plan.rows.length?plan.rows.map(r=>`<tr><td><span class="mono">TP${r.i}</span></td><td><span class="mono">${fmt(r.target,c.digits)}</span></td><td><span class="mono">${fmt(r.close,c.volDigits)}</span></td><td><span class="mono">${fmt(r.remaining,c.volDigits)}</span></td><td class="positive"><span class="mono">${money(r.profit,c,true)}</span></td><td><span class="mono">${c.tradeSide==='buy'?'BUY LIMIT':'SELL LIMIT'} @ ${fmt(r.refillPrice,c.digits)}</span></td></tr>`).join(''):'<tr><td colspan="6">لا توجد أهداف صالحة مع مسافة TP الحالية.</td></tr>';
+ const sample=plan.rows[0];
+ byId('splitNote').innerHTML=`الأرباح المعروضة تُحسب نظريًا عند تحقق كل هدف، قبل العمولات والسواب والانزلاق. <b>لا يتم جمع أرباح إعادة التعبئة</b> ضمن مجموع هذا السلم. ${!c.refillRecycles?'إعادة تعبئة صفقة R نفسها معطّلة، لكن تعبئة إغلاقات B/C تبقى مفعّلة.':''}`;
+ byId('refillExplanation').textContent=sample?`لـ ${c.tradeSide==='buy'?'BUY LIMIT':'SELL LIMIT'}: سعر الهدف الأول ${fmt(sample.target,c.digits)} ${c.tradeSide==='buy'?'ناقص':'زائد'} مسافة TP + الإضافة (${fmt(c.pendingPrice,c.digits)}) = ${fmt(sample.refillPrice,c.digits)}. ${c.serverTP?`هدف TP الخادمي لهذا الأمر = ${fmt(sample.refillTP,c.digits)}.`:'لا يوجد TP خادمي مثبت على الأمر في إعداداتك.'}`:'لا يتوفر حساب لإعادة التعبئة دون TP موجب.';
+ byId('rExplanation').textContent=`أي صفقة R تُفتح بعد تنفيذ الأمر المعلق تتكون من تقسيمة واحدة (splits=1). عند إغلاقها، ${c.refillRecycles?'قد ينشئ الإكسبيرت طلب إعادة تعبئة جديدًا إذا سمحت القيود الأخرى.':'لا يعيد إنشاء أمر تعبئة من إغلاق R.'} إدارة الإغلاق ما تزال مرتبطة بحركة السعر.`;
+}
+function renderDaily(m){const c=m.c,delta=c.equity-c.dayBalance;
+ byId('dailyTarget').textContent=money(m.targetEquity,c);byId('dailyModeDescription').textContent=c.targetMode==='percent'?`رصيد بداية اليوم × (1 + ${fmt(c.targetValue,2)}%)`:`رصيد بداية اليوم + ${money(c.targetValue,c)}`;
+ const status=c.dailyEnabled?(m.targetHit?'تم بلوغ الهدف':'لم يُبلَغ الهدف'):'الهدف معطّل';byId('dailyBadge').textContent=status;byId('dailyBadge').className='light-tag '+(c.dailyEnabled&&m.targetHit?'teal':'warn');
+ let ratio;if(m.targetEquity>c.dayBalance)ratio=Math.max(0,Math.min(100,(c.equity-c.dayBalance)/(m.targetEquity-c.dayBalance)*100));else ratio=m.targetHit?100:0;
+ byId('dailyProgress').style.width=ratio+'%';byId('progressDescription').textContent=`نسبة تحقيق الزيادة المطلوبة عن رصيد بداية اليوم: ${fmt(ratio,1)}%`;
+ byId('dailyBalanceInfo').textContent=money(c.dayBalance,c);byId('dailyEquityInfo').textContent=money(c.equity,c);byId('dailyGapInfo').textContent=money(m.targetGap,c);byId('dailyDelta').textContent=money(delta,c,true);byId('dailyDelta').className=pnlColor(delta);byId('dailyRate').textContent=c.targetMode==='percent'?fmt(c.targetValue,2)+' %':money(c.targetValue,c);
+ byId('dailyTradesInfo').textContent=c.tradeLimit&&c.maxDaily>0?`${fmt(c.dailyCount,0)} / ${fmt(c.maxDaily,0)}`:'بلا حد مفعّل';
+ const notes=[];
+ if(c.dailyEnabled&&m.targetHit)notes.push(note('good',`الـEquity المدخل بلغ الهدف. الإكسبيرت يوقف الفتح ويحذف أوامر التعبئة؛ ${c.closeAll?'ومع تفعيل خيار الإغلاق سيحاول إغلاق صفقات الإكسبيرت على الرمز الحالي.':'أما الصفقات المفتوحة فستظل بدون إغلاق شامل تلقائي بسبب تعطيل الخيار.'}`));
+ if(!c.dailyEnabled)notes.push(note('warning','الهدف اليومي معطل، ويظل حد التداولات اليومية مستقلاً عنه إن كان مفعلاً.'));
+ if(c.tradeLimit&&c.maxDaily>0&&c.dailyCount>=c.maxDaily)notes.push(note('warning','تم بلوغ الحد اليومي لعدد عمليات الفتح/إنشاء أوامر التعبئة حسب العدد المُدخل.'));
+ notes.push(note('',`وقت السماح بالافتتاح الجديد: ساعة <b>${fmt(c.startHour,0)}:00</b> من توقيت السيرفر + <b>${fmt(c.resumeMinutes,0)} دقيقة</b> (الأصل في الكود InpDayStartHour وInpResumeAfterMinutes). الإعداد لا يعني الانتظار بعد الوصول إلى الهدف.`));
+ byId('dailyWarnings').innerHTML=notes.join('');
+}
+function renderChart(m){const canvas=byId('plChart');if(!canvas||!canvas.parentNode)return;const bounds=canvas.getBoundingClientRect();if(bounds.width<20)return;const ratio=Math.min(window.devicePixelRatio||1,2),W=bounds.width,H=bounds.height;canvas.width=Math.floor(W*ratio);canvas.height=Math.floor(H*ratio);const g=canvas.getContext('2d');g.scale(ratio,ratio);const c=m.c;const right=16,left=65,top=18,bottom=35,pw=W-left-right,ph=H-top-bottom;
+ const entries=m.list.map(p=>p.price),span=Math.max(c.point*100,Math.abs(c.coolingPrice)*Math.max(2,m.list.length)*.65,Math.abs(c.tpPrice)*c.splits*.5,Math.abs(c.currentBid-c.entryPrice)*.85);
+ const xmin=Math.min(...entries,c.currentBid,m.breakEven)-span*.3,xmax=Math.max(...entries,c.currentBid,m.breakEven)+span*.3;
+ const ys=Array.from({length:101},(_,i)=>posPnl(m,xmin+(xmax-xmin)*i/100)),low=Math.min(0,...ys),high=Math.max(0,...ys),ypad=Math.max((high-low)*.12,Math.abs(c.onePointValue*m.totalLots)*10,1),ymin=low-ypad,ymax=high+ypad;
+ const xx=x=>left+(x-xmin)/(xmax-xmin)*pw,yy=y=>top+(ymax-y)/(ymax-ymin)*ph;
+ g.clearRect(0,0,W,H);g.lineWidth=1;g.font='11px Tahoma, Arial';g.textAlign='right';
+ for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,y=yy(v);g.strokeStyle='#eaf0f5';g.beginPath();g.moveTo(left,y);g.lineTo(left+pw,y);g.stroke();g.fillStyle='#8999a8';g.fillText(fmt(v,0),left-9,y+3)}
+ g.textAlign='center';for(let i=0;i<=4;i++){const x=xmin+(xmax-xmin)*i/4,px=xx(x);g.fillStyle='#8798a9';g.fillText(fmt(x,c.digits),px,H-10)}
+ const baseline=yy(0);g.strokeStyle='#cbd7e2';g.setLineDash([4,3]);g.beginPath();g.moveTo(left,baseline);g.lineTo(left+pw,baseline);g.stroke();g.setLineDash([]);
+ g.beginPath();for(let i=0;i<=100;i++){const px=xx(xmin+(xmax-xmin)*i/100),py=yy(ys[i]);if(!i)g.moveTo(px,py);else g.lineTo(px,py)}g.lineTo(xx(xmax),baseline);g.lineTo(xx(xmin),baseline);g.closePath();g.fillStyle='rgba(0,179,153,.07)';g.fill();
+ g.beginPath();for(let i=0;i<=100;i++){const px=xx(xmin+(xmax-xmin)*i/100),py=yy(ys[i]);if(!i)g.moveTo(px,py);else g.lineTo(px,py)}g.strokeStyle='#08aa91';g.lineWidth=2.5;g.stroke();
+ const be=xx(m.breakEven);g.setLineDash([4,4]);g.strokeStyle='#8a9caf';g.lineWidth=1.1;g.beginPath();g.moveTo(be,top);g.lineTo(be,H-bottom);g.stroke();g.setLineDash([]);
+ const nowX=xx(c.currentBid),nowY=yy(m.currentPL);g.strokeStyle='#e0a354';g.setLineDash([3,4]);g.beginPath();g.moveTo(nowX,top);g.lineTo(nowX,H-bottom);g.stroke();g.setLineDash([]);g.beginPath();g.arc(nowX,nowY,5,0,Math.PI*2);g.fillStyle='#fff';g.fill();g.strokeStyle='#de9d42';g.lineWidth=2;g.stroke();
+}
+function rerender(){model=compute();byId('stepField').classList.toggle('hidden',byId('coolingMode').value!=='step');byId('multiplierField').classList.toggle('hidden',byId('coolingMode').value!=='multiplier');renderMain(model);renderGrid(model);renderSplits(model);renderDaily(model);saveSettings();}
+function setTab(tab){activeTab=tab;document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));document.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('active',p.id==='pane-'+tab));if(tab==='overview')requestAnimationFrame(()=>renderChart(model));}
+function csvEscape(s){return '"'+String(s).replaceAll('"','""')+'"';}
+function fileDownload(name,blob,mime){const url=URL.createObjectURL(new Blob([blob],{type:mime}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);}
+function makeCsv(rows){return '\ufeff'+rows.map(row=>row.map(csvEscape).join(',')).join('\r\n');}
+function downloadGrid(){if(!model)return;const c=model.c;const rows=[['Index','Kind','Trigger','EntryPrice','Lots','CumulativeLots','PnL_'+c.currency],...model.list.map(p=>[p.i,p.kind,p.trigger===null?'BASE':p.trigger,p.price,p.lot,p.cumulative,p.pnl])];fileDownload('AdvancedGridEA_grid.csv',makeCsv(rows),'text/csv;charset=utf-8');toast('تم إنشاء جدول الشبكة CSV');}
+function downloadReport(){if(!model)return;const m=model,c=m.c,plan=splitPlan(m,Number(byId('selectedPos').value)||0);const rows=[['AdvancedGridEA v1.09 - Offline Calculator'],['Setting','Value'],...IDS.map(id=>[id,checks.has(id)?bool(id):str(id)]),[],['Summary','Value'],['Trade Side',c.tradeSide],['Base + Cooling Lots',m.totalLots],['Hypothetical PnL',m.currentPL],['Break Even Bid',m.breakEven],['Target Equity',m.targetEquity],[],['Grid'],['Number','Kind','Trigger','Entry','Lots','CumulativeLots','HypotheticalPnL'],...m.list.map(p=>[p.i,p.kind,p.trigger===null?'BASE':p.trigger,p.price,p.lot,p.cumulative,p.pnl]),[],['Partial Exits for selected position'],['Step','Target','CloseLots','Remaining','Profit','RefillEntry','RefillTP'],...plan.rows.map(r=>[r.i,r.target,r.close,r.remaining,r.profit,r.refillPrice,r.refillTP]),[],['Important','Hypothetical price path only; no live MT5 data; no fixed stop loss; excludes commissions, slippage and swap']];fileDownload('AdvancedGridEA_report.csv',makeCsv(rows),'text/csv;charset=utf-8');toast('تم إنشاء التقرير');}
+function profileChange(){const p=profiles[byId('symbolPreset').value];if(p){for(const[id,v]of Object.entries(p))byId(id).value=v;}rerender();}
+for(const id of IDS){const el=byId(id);el.addEventListener('input',()=>{if(id==='symbolPreset')return;rerender();});el.addEventListener('change',()=>{if(id==='symbolPreset')profileChange();else rerender();});}
+byId('selectedPos').addEventListener('change',()=>renderSplits(model));
+byId('resetBtn').addEventListener('click',()=>{for(const [id,v]of Object.entries(defaults)){if(checks.has(id))byId(id).checked=v;else byId(id).value=v;}rerender();toast('تم استعادة إعدادات الإكسبيرت الافتراضية والقيم التوضيحية للأسعار');});
+byId('exportBtn').addEventListener('click',()=>{const obj={application:'GridLab EA 1.09',source:'AdvancedGridEA v1.09',savedAt:new Date().toISOString(),settings:{}};for(const id of IDS)obj.settings[id]=checks.has(id)?bool(id):str(id);fileDownload('AdvancedGridEA_settings.json',JSON.stringify(obj,null,2),'application/json;charset=utf-8');toast('تم تصدير الإعدادات JSON');});
+byId('reportBtn').addEventListener('click',downloadReport);byId('gridCsvBtn').addEventListener('click',downloadGrid);
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+window.addEventListener('resize',()=>{if(model&&activeTab==='overview')renderChart(model)});
+loadSettings();rerender();setTab('overview');
+})();
+</script>
+</body></html>
